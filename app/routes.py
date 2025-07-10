@@ -11,15 +11,17 @@ def home():
 
 @bp.route('/meals', methods=['POST'])
 def create_meal():
-    data = request.json
+    data = request.get_json()
 
     try:
         new_meal = Meal(
             name=data['name'],
             description=data.get('description', ''),
             date_time=datetime.strptime(data['date_time'], "%Y-%m-%d %H:%M"),
-            is_on_diet=data['is_on_diet']
+            is_on_diet=data['is_on_diet'],
+            user_id=data['user_id']  # 👈 isso aqui é essencial
         )
+
         db.session.add(new_meal)
         db.session.commit()
 
@@ -27,6 +29,7 @@ def create_meal():
 
     except Exception as e:
         return jsonify({"error": str(e)}), 400
+
 
 @bp.route('/meals/<int:meal_id>', methods=['PUT'])
 def update_meal(meal_id):
@@ -56,3 +59,8 @@ def delete_meal(meal_id):
 
     except Exception as e:
         return jsonify({"error": str(e)}), 400
+
+@bp.route('/users/<int:user_id>/meals', methods=['GET'])
+def get_meals_by_user(user_id):
+    meals = Meal.query.filter_by(user_id=user_id).all()
+    return jsonify([meal.to_dict() for meal in meals]), 200
