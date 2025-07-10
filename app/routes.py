@@ -64,3 +64,12 @@ def delete_meal(meal_id):
 def get_meals_by_user(user_id):
     meals = Meal.query.filter_by(user_id=user_id).all()
     return jsonify([meal.to_dict() for meal in meals]), 200
+
+@bp.route('/users/<int:user_id>/meals/<int:meal_id>', methods=['GET'])
+def get_user_meal(user_id, meal_id):
+    meal = Meal.query.filter_by(id=meal_id, user_id=user_id).first()
+
+    if not meal:
+        return jsonify({"error": "Refeição não encontrada para este usuário"}), 404
+
+    return jsonify(meal.to_dict()), 200
