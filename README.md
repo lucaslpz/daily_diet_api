@@ -85,28 +85,26 @@ DELETE /meals/2
 
 ## 📁 Project Structure
 
+## 📁 Project Structure
+
+```bash
 daily_diet_api/
-│
 ├── app/
-│   ├── __init__.py        # Flask app setup
-│   ├── routes.py          # Routes (endpoints)
-│   ├── models.py          # Database models
-│   └── database.py        # DB configuration
-│
+│   ├── __init__.py          # Flask app setup  
+│   ├── routes.py            # Routes (endpoints)  
+│   ├── models.py            # Database models  
+│   └── database.py          # DB configuration  
 ├── instance/
-│   └── database.db        # SQLite database
-│
-├── venv/                  # Virtual environment
-├── config.py              # App configuration
-├── run.py                 # App entry point (if used)
-├── .env                   # Environment variables
-├── .gitignore
-├── README.md
-└── requirements.txt
+│   └── database.db          # SQLite database  
+├── venv/                    # Virtual environment (not uploaded)  
+├── config.py                # App configuration  
+├── run.py                   # App entry point (if used)  
+├── .env                     # Environment variables  
+├── .gitignore               # Ignored files  
+├── README.md                # Project documentation  
+└── requirements.txt         # Dependencies
 
 ---
-
-## 🧑‍💻 Author
 
 ## 🧑‍💻 Author
 
