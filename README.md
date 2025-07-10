@@ -85,8 +85,6 @@ DELETE /meals/2
 
 ## 📁 Project Structure
 
-## 📁 Project Structure
-
 ```bash
 daily_diet_api/
 ├── app/
